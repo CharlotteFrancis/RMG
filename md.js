@@ -9,6 +9,8 @@ const md = {
   },
   add (string) {
     this.body.push(string + '\n')
+  },
+  hr () {
     this.body.push('---' + '\n')
   },
   create () {
@@ -17,9 +19,6 @@ const md = {
       final += string
     })
     return final
-  },
-  title (s1) {
-    this.addh1(s1)
   },
   section (s1, s2) {
     this.addh2(s1)
