@@ -7,12 +7,6 @@ const md = {
   addh2 (string) {
     this.body.push('## ' + string + '\n')
   },
-  addh3 (string) {
-    this.body.push('### ' + string + '\n')
-  },
-  addh4 (string) {
-    this.body.push('#### ' + string + '\n')
-  },
   add (string) {
     this.body.push(string + '\n')
     this.body.push('---' + '\n')
@@ -24,9 +18,8 @@ const md = {
     })
     return final
   },
-  title (s1, s2) {
+  title (s1) {
     this.addh1(s1)
-    this.add(s2)
   },
   section (s1, s2) {
     this.addh2(s1)
