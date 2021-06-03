@@ -40,6 +40,29 @@ const askSection = _ => {
     .then((answers) => {
       // process answers code here
       // ask again
+      switch(answers.type){
+        case 'Table of Contents':
+          tableOfContents()
+          break
+        case 'Installation':
+          addSection('Installation')
+          break
+        case 'Usage':
+          addSection('Usage')
+          break
+        case 'License':
+          addSection('License')
+          break
+        case 'Contributing':
+          addSection('Contributing')
+          break
+        case 'Tests':
+          break
+        case 'Questions':
+          break
+        default:
+          break
+      }
       ask()
     })
     .catch(err => console.log(err))

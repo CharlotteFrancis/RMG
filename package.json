@@ -1,0 +1,23 @@
+{
+  "name": "RMG",
+  "version": "1.0.0",
+  "description": "README Generator (RMG) generates a README.md based on user input",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CharlotteFrancis/RMG.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CharlotteFrancis/RMG/issues"
+  },
+  "homepage": "https://github.com/CharlotteFrancis/RMG#readme",
+  "dependencies": {
+    "inquirer": "^8.1.0"
+  }
+}
