@@ -8,6 +8,7 @@
 const md = require('./md.js')
 const inquirer = require('inquirer')
 const fs = require('fs')
+const { toNamespacedPath } = require('path/posix')
 // const { listenerCount } = require('events')
 
 class ReadData {
@@ -23,12 +24,37 @@ class ReadData {
     this.tests = tests
   }
 
+  tableOfContents () {
+    let myTable = ''
+    myTable += '[Description](#description)\n'
+    if (this.installation !== '') {
+      myTable += '[Installation](#installation)\n'
+    }
+    if (this.usage !== '') {
+      myTable += '[Usage](#usage)\n'
+    }
+    if (this.lic !== '') {
+      myTable += '[License](#license)\n'
+    }
+    if (this.contr !== '') {
+      myTable += '[Contributing](#contributing)\n'
+    }
+    if (this.tests !== '') {
+      myTable += '[Tests](#tests)\n'
+    }
+    myTable += '[Questions](#questions)\n'
+
+    return myTable
+  }
+
   render () {
     md.addh1(this.title)
     md.hr()
     // lisense badge
     md.add(`![License Badge]('https://img.shields.io/badge/license-${this.lic}-blue.svg')`)
     // table of contents
+    md.addh2('Table of Contents')
+    md.add(`${this.tableOfContents()}`)
     md.hr()
     md.addh2('Description')
     md.add(this.description)
@@ -89,17 +115,6 @@ const addSection = (type) => {
     .catch(err => console.log(err))
 }
 
-// Questions
-const addQuestions = _ => {
-  // username + email for contact
-}
-
-// License
-
-const addLicense = _ => {
-  // add badge near top of the html page ahh how do i do this actually LOL
-}
-
 const askSection = _ => {
   inquirer.prompt([
     {
@@ -111,8 +126,7 @@ const askSection = _ => {
         'Usage',
         'License',
         'Contributing',
-        'Tests',
-        'Questions'
+        'Tests'
       ]
     }
   ])
@@ -127,16 +141,13 @@ const askSection = _ => {
           addSection('Usage')
           break
         case 'License':
-          addLicense()
+          addSection('License')
           break
         case 'Contributing':
           addSection('Contributing')
           break
         case 'Tests':
           addSection('Tests')
-          break
-        case 'Questions':
-          addQuestions()
           break
         default:
           break
