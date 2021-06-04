@@ -9,6 +9,7 @@ const md = require('./md.js')
 const inquirer = require('inquirer')
 const fs = require('fs')
 
+// class to hold data before rendering
 class ReadData {
   constructor (title, description, username, email, installation, usage, license, contributing, tests) {
     this.title = title
@@ -22,6 +23,7 @@ class ReadData {
     this.tests = tests
   }
 
+  // generate table of contents
   tableOfContents () {
     let myTable = ''
     myTable += '[Description](#description)\n'
@@ -178,15 +180,13 @@ const askTitle = _ => {
       myData.description = answers.desc
       myData.username = answers.username
       myData.email = answers.email
-      // test
-      // console.log(myData)
       // add another
       ask()
     })
     .catch(err => console.log(err))
 }
 
-// add a section?
+// add a section
 const ask = _ => {
   inquirer.prompt([
     {
