@@ -11,7 +11,7 @@ const fs = require('fs')
 
 // class to hold data before rendering
 class ReadData {
-  constructor (title, description, username, email, installation, usage, license, contributing, tests) {
+  constructor (title, description, username, email, installation, usage, license, contributing, tests, url) {
     this.title = title
     this.description = description
     this.username = username
@@ -21,6 +21,7 @@ class ReadData {
     this.license = license
     this.contributing = contributing
     this.tests = tests
+    this.url = url
   }
 
   // generate table of contents
@@ -58,6 +59,8 @@ class ReadData {
     md.hr()
     md.addh2('Description')
     md.add(this.description + '\n')
+    md.add('Here is an image of the application in use:\n')
+    md.add(`![Application Image](${this.url})`)
     md.hr()
     if (this.installation !== '') {
       md.addh2('Installation')
@@ -173,6 +176,11 @@ const askTitle = _ => {
       type: 'input',
       name: 'desc',
       message: 'Give a description of the project'
+    },
+    {
+      type: 'input',
+      name: 'url',
+      message: 'Give a url to an image of the project'
     }
   ])
     .then((answers) => {
@@ -180,6 +188,7 @@ const askTitle = _ => {
       myData.description = answers.desc
       myData.username = answers.username
       myData.email = answers.email
+      myData.url = answers.url
       // add another
       ask()
     })
@@ -212,5 +221,5 @@ const ask = _ => {
     .catch(err => console.log(err))
 }
 
-let myData = new ReadData('', '', '', '', '', '', '', '', '')
+let myData = new ReadData('', '', '', '', '', '', '', '', '', '')
 askTitle()
