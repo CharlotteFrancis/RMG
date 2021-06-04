@@ -49,7 +49,7 @@ class ReadData {
     md.addh1(this.title)
     md.hr()
     // lisense badge
-    md.add(`![License Badge]('https://img.shields.io/badge/license-${this.license}-blue.svg')`)
+    md.add(`![License Badge](https://img.shields.io/badge/license-${this.license}-blue.svg)`)
     // table of contents
     md.addh2('Table of Contents')
     md.add(`${this.tableOfContents()}\n`)
