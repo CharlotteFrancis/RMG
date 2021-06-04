@@ -10,15 +10,15 @@ const inquirer = require('inquirer')
 const fs = require('fs')
 
 class ReadData {
-  constructor (title, description, username, email, installation, usage, lic, contr, tests) {
+  constructor (title, description, username, email, installation, usage, license, contributing, tests) {
     this.title = title
     this.description = description
     this.username = username
     this.email = email
     this.installation = installation
     this.usage = usage
-    this.lic = lic
-    this.contr = contr
+    this.license = license
+    this.contributing = contributing
     this.tests = tests
   }
 
@@ -31,10 +31,10 @@ class ReadData {
     if (this.usage !== '') {
       myTable += '[Usage](#usage)\n'
     }
-    if (this.lic !== '') {
+    if (this.license !== '') {
       myTable += '[License](#license)\n'
     }
-    if (this.contr !== '') {
+    if (this.contributing !== '') {
       myTable += '[Contributing](#contributing)\n'
     }
     if (this.tests !== '') {
@@ -49,7 +49,7 @@ class ReadData {
     md.addh1(this.title)
     md.hr()
     // lisense badge
-    md.add(`![License Badge]('https://img.shields.io/badge/license-${this.lic}-blue.svg')`)
+    md.add(`![License Badge]('https://img.shields.io/badge/license-${this.license}-blue.svg')`)
     // table of contents
     md.addh2('Table of Contents')
     md.add(`${this.tableOfContents()}\n`)
@@ -67,14 +67,14 @@ class ReadData {
       md.add(this.usage + '\n')
       md.hr()
     }
-    if (this.lic !== '') {
+    if (this.license !== '') {
       md.addh2('License')
-      md.add(this.lic + '\n')
+      md.add(this.license + '\n')
       md.hr()
     }
-    if (this.contr !== '') {
+    if (this.contributing !== '') {
       md.addh2('Contributing')
-      md.add(this.contr + '\n')
+      md.add(this.contributing + '\n')
       md.hr()
     }
     if (this.tests !== '') {
