@@ -7,6 +7,7 @@
 
 const md = require('./md.js')
 const inquirer = require('inquirer')
+const fs = require('fs')
 // const { listenerCount } = require('events')
 
 class ReadData {
@@ -26,6 +27,7 @@ class ReadData {
     md.addh1(this.title)
     md.hr()
     // lisense badge
+    md.add(`![License Badge]('https://img.shields.io/badge/license-${this.lic}-blue.svg')`)
     // table of contents
     md.hr()
     md.addh2('Description')
@@ -73,7 +75,18 @@ const tableOfContents = _ => {
 
 // Generic Section
 const addSection = (type) => {
-  //
+  const lowType = type.toLowerCase()
+  inquirer.prompt([
+    {
+      type: 'input',
+      name: 'response',
+      message: `Fill in text content for ${type}.`
+    }
+  ])
+    .then((res) => {
+      myData[lowType] = res.response
+    })
+    .catch(err => console.log(err))
 }
 
 // Questions
@@ -94,7 +107,6 @@ const askSection = _ => {
       name: 'type',
       message: 'What type of section do you want to add?',
       choices: [
-        'Table of Contents',
         'Installation',
         'Usage',
         'License',
@@ -108,9 +120,6 @@ const askSection = _ => {
       // process answers code here
       // ask again
       switch(answers.type){
-        case 'Table of Contents':
-          tableOfContents()
-          break
         case 'Installation':
           addSection('Installation')
           break
@@ -142,6 +151,16 @@ const askTitle = _ => {
   inquirer.prompt([
     {
       type: 'input',
+      name: 'username',
+      message: 'What is your GitHub username?'
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'What is your email address?'
+    },
+    {
+      type: 'input',
       name: 'title',
       message: 'What is the title of the project?'
     },
@@ -154,6 +173,8 @@ const askTitle = _ => {
     .then((answers) => {
       myData.title = answers.title
       myData.description = answers.desc
+      myData.username = answers.username
+      myData.email = answers.email
       // test
       console.log(myData)
       // add another
@@ -177,6 +198,12 @@ const ask = _ => {
         askSection()
       } else {
         // output writefile
+        fs.writeFile('README.md', myData.render(), err => {
+          if (err) {
+            console.log(err)
+          }
+          console.log('README.md created!')
+        })
       }
     })
     .catch(err => console.log(err))
