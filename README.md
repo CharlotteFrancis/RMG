@@ -13,15 +13,18 @@
 
 ---
 ## Description
-Read Me Generator (RMG) is an application that allows a user to create a README.md based on their input
+Read Me Generator (RMG) is an application that allows a user to generate a README.md by using their own input. RMG was made with JavaScript.
 
+Here is an image of the application in use:
+
+![Application Image](./assets/Results.png)
 ---
 ## Installation
-Go to the repository and clone it down
+To install RMG go to the repository at https://github.com/CharlotteFrancis/RMG then clone it to your local files. Once you open run 'npm init -y' then 'npm i' and you're all set!
 
 ---
 ## Usage
-Run app.js with node then follow the text prompts
+To use RMG run the command 'node app.js' in the terminal, make sure you have node installed! Once you do that just follow the text prompts in the terminal and it will generate you a README once you choose not to add another section.
 
 ---
 ## License
@@ -29,11 +32,11 @@ None
 
 ---
 ## Contributing
-To contribute just make your own branch and suggest changes to me.
+If you want to contribute to RMG just create your own branch and then reach out to me if you come up with anything cool.
 
 ---
 ## Tests
-To test this application just input data for one of your own repositories.
+If you want to test this application then just fill it out with information on one of your own repositories!
 
 ---
 ## Questions
