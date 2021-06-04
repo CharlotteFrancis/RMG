@@ -8,8 +8,6 @@
 const md = require('./md.js')
 const inquirer = require('inquirer')
 const fs = require('fs')
-const { toNamespacedPath } = require('path/posix')
-// const { listenerCount } = require('events')
 
 class ReadData {
   constructor (title, description, username, email, installation, usage, lic, contr, tests) {
@@ -54,34 +52,34 @@ class ReadData {
     md.add(`![License Badge]('https://img.shields.io/badge/license-${this.lic}-blue.svg')`)
     // table of contents
     md.addh2('Table of Contents')
-    md.add(`${this.tableOfContents()}`)
+    md.add(`${this.tableOfContents()}\n`)
     md.hr()
     md.addh2('Description')
-    md.add(this.description)
+    md.add(this.description + '\n')
     md.hr()
     if (this.installation !== '') {
       md.addh2('Installation')
-      md.add(this.installation)
+      md.add(this.installation + '\n')
       md.hr()
     }
     if (this.usage !== '') {
       md.addh2('Usage')
-      md.add(this.usage)
+      md.add(this.usage + '\n')
       md.hr()
     }
     if (this.lic !== '') {
       md.addh2('License')
-      md.add(this.lic)
+      md.add(this.lic + '\n')
       md.hr()
     }
     if (this.contr !== '') {
       md.addh2('Contributing')
-      md.add(this.contr)
+      md.add(this.contr + '\n')
       md.hr()
     }
     if (this.tests !== '') {
       md.addh2('Tests')
-      md.add(this.tests)
+      md.add(this.tests + '\n')
       md.hr()
     }
     md.addh2('Questions')
@@ -89,14 +87,8 @@ class ReadData {
     md.add(`[GitHub Profile Link](github.com/${this.username})`)
     md.add(`Contact me at ${this.email} if you have any further questions.`)
 
-    return md.create
+    return md.create()
   }
-}
-
-// ToC
-const tableOfContents = _ => {
-  // table stuff
-  // lodash kebab case
 }
 
 // Generic Section
@@ -111,6 +103,7 @@ const addSection = (type) => {
   ])
     .then((res) => {
       myData[lowType] = res.response
+      ask()
     })
     .catch(err => console.log(err))
 }
@@ -133,7 +126,7 @@ const askSection = _ => {
     .then((answers) => {
       // process answers code here
       // ask again
-      switch(answers.type){
+      switch (answers.type) {
         case 'Installation':
           addSection('Installation')
           break
@@ -152,7 +145,6 @@ const askSection = _ => {
         default:
           break
       }
-      ask()
     })
     .catch(err => console.log(err))
 }
@@ -187,7 +179,7 @@ const askTitle = _ => {
       myData.username = answers.username
       myData.email = answers.email
       // test
-      console.log(myData)
+      // console.log(myData)
       // add another
       ask()
     })
