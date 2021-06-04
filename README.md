@@ -1,29 +1,39 @@
 # RMG
 ---
-![License Badge]('https://img.shields.io/badge/license--blue.svg')
+![License Badge]('https://img.shields.io/badge/license-MIT-blue.svg')
 ## Table of Contents
 [Description](#description)
 [Installation](#installation)
 [Usage](#usage)
+[License](#license)
+[Contributing](#contributing)
 [Tests](#tests)
 [Questions](#questions)
 
 
 ---
 ## Description
-Read Me Generator (RMG) is an application that generates a README.md based on user input
+Read Me Generator (RMG) is an application that lets a user generate a README.md file based on their input!
 
 ---
 ## Installation
-To install RMG go to git hub page and clone the repository.
+To install go to github and clone
 
 ---
 ## Usage
-To use RMG run the app.js file through node and follow the text prompts in the terminal
+to use it run it with node and then follow txt prompts
+
+---
+## License
+None
+
+---
+## Contributing
+To contribute just make changes to your own branch and suggest changes to main
 
 ---
 ## Tests
-To test this out just try to fill out the data for any repository of your own!
+To test this just fill out the information of one of your repositories!
 
 ---
 ## Questions
